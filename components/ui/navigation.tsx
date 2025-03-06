@@ -16,7 +16,6 @@ export default function Navigation() {
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map(item => document.getElementById(item.id));
-      const viewportHeight = window.innerHeight;
       const scrollPosition = window.scrollY + offset;
 
       for (let i = sections.length - 1; i >= 0; i--) {

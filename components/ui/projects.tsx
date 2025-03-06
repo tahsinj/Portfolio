@@ -1,18 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Card, CardContent } from "./card";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import projects from "../../data/projects.json";
 import { FaGithub } from "react-icons/fa";
-
-interface Project {
-  title: string;
-  description: string;
-  image: string;
-  github: string;
-  technologies: string[];
-  featured?: boolean;
-}
 
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
