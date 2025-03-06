@@ -1,0 +1,44 @@
+[
+    {
+      "title": "Weather App",
+      "description": "A responsive weather application that displays current weather and forecasts using OpenWeatherMap API.",
+      "image": "/1.jpg",
+      "github": "https://github.com/tahsinj/WeatherApp",
+      "technologies": ["HTML", "CSS", "JavaScript", "OpenWeatherMap API"]
+    },
+    {
+      "title": "URL Shortener",
+      "description": "A URL shortening service built with Django that allows users to create and manage shortened URLs.",
+      "image": "/2.jpg",
+      "github": "https://github.com/tahsinj/URLShortener",
+      "technologies": ["Python", "Django", "Bootstrap"]
+    },
+    {
+      "title": "Discord Clone",
+      "description": "A real-time chat application that mimics Discord's core features using Next.js and Clerk for authentication.",
+      "image": "/3.jpg",
+      "github": "https://github.com/tahsinj/DiscordClone",
+      "technologies": ["TypeScript", "Next.js", "TailwindCSS", "Clerk"]
+    },
+    {
+      "title": "Movie Recommendation System",
+      "description": "A machine learning-based movie recommendation system that suggests movies based on user preferences and viewing history.",
+      "image": "/4.jpg",
+      "github": "https://github.com/tahsinj/MovieRecomSystem",
+      "technologies": ["Python", "TensorFlow", "NumPy", "Pandas", "Scikit-learn"]
+    },
+    {
+      "title": "MoodiJawoodi Grocery Store",
+      "description": "A grocery store management system with inventory tracking, sales management, and customer database.",
+      "image": "/5.jpg",
+      "github": "https://github.com/tahsinj/MoodiJawoodiGrocery",
+      "technologies": ["Java", "SQL", "MySQL", "HTML", "CSS"]
+    },
+    {
+      "title": "Skin Cancer Classification",
+      "description": "A deep learning model for classifying different types of skin cancer using convolutional neural networks.",
+      "image": "/6.jpg",
+      "github": "https://github.com/tahsinj/SkinCancerClassification",
+      "technologies": ["Python", "TensorFlow", "NumPy", "Pandas", "Scikit-learn"]
+    }
+]
