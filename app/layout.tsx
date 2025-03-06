@@ -6,8 +6,8 @@ import { ThemeProvider } from "next-themes";
 const sen = Sen({subsets: ["latin"]})
 
 export const metadata: Metadata = {
-  title: "Portfolio Website",
-  description: "Portfolio Website Created with NextJS",
+  title: "Tahsin Jawwad - Portfolio",
+  description: "Explore my portfolio showcasing projects, skills, and experience in software development.",
 };
 
 export default function RootLayout({
