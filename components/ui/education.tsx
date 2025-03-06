@@ -19,7 +19,7 @@ export default function Education(){
                 </div>
                 <div className="text-right">
                   <p className="font-semibold">GPA: 4.33/4.33</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Dean's List 2022-2024</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Dean&apos;s List 2022-2024</p>
                 </div>
               </div>
               
