@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { projects, type Category } from "@/data/projects";
+import NoSqlFeature from "./NoSqlFeature";
 import ProjectCard from "./ProjectCard";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
@@ -19,6 +20,7 @@ const filters: { id: Filter; label: string }[] = [
 // The two featured pieces sit outside the card grid.
 const featured: Record<string, Category[]> = {
   statArb: ["quant"],
+  noSql: ["research", "engineering"],
 };
 
 const matches = (filter: Filter, categories: Category[]) => filter === "all" || categories.includes(filter);
@@ -51,6 +53,7 @@ export default function Work() {
         </SectionHeading>
 
         {matches(filter, featured.statArb) && <StatArbFeature />}
+        {matches(filter, featured.noSql) && <NoSqlFeature />}
 
         <div className="project-grid">
           {visible.map((project, i) => (
