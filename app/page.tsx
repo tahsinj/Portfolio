@@ -1,3 +1,4 @@
+import Contact from "@/components/Contact";
 import Experience from "@/components/Experience";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -18,6 +19,7 @@ export default function Home() {
         <Experience />
         <Toolkit />
         <Honours />
+        <Contact />
       </main>
       <Footer />
     </>
