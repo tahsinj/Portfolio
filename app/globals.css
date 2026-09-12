@@ -346,6 +346,12 @@ dd {
   pointer-events: none;
 }
 
+html:not([data-ready]) .rise,
+html:not([data-ready]) .glitch,
+html:not([data-ready]) .path-layer {
+  animation-play-state: paused;
+}
+
 /* ---------- reveal on scroll ---------- */
 
 .reveal.armed {
