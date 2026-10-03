@@ -1,29 +1,46 @@
 import type { Metadata, Viewport } from "next";
-import { Chakra_Petch, Dela_Gothic_One, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const body = Chakra_Petch({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+// Fonts are bundled in app/fonts so builds never depend on fetching them.
+const body = localFont({
+  src: [
+    { path: "./fonts/ChakraPetch-400.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/ChakraPetch-500.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/ChakraPetch-600.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/ChakraPetch-700.woff2", weight: "700", style: "normal" },
+  ],
   variable: "--font-body",
+  display: "swap",
 });
 
-const display = Dela_Gothic_One({
-  subsets: ["latin"],
+const display = localFont({
+  src: "./fonts/DelaGothicOne-400.woff2",
   weight: "400",
   variable: "--font-display",
+  display: "swap",
 });
 
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
+const mono = localFont({
+  src: "./fonts/JetBrainsMono.woff2",
+  weight: "400 700",
   variable: "--font-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://jawwad.dev"),
   title: "Tahsin Jawwad | Quant Research & Software Engineering",
   description:
     "Master of Quantitative Finance candidate at the University of Waterloo. Quant research, statistical arbitrage and software engineering.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "Tahsin Jawwad",
+    title: "Tahsin Jawwad | Quant Research & Software Engineering",
+    description: "MQF candidate at the University of Waterloo. Quant research and software engineering.",
+  },
 };
 
 export const viewport: Viewport = {
