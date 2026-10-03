@@ -10,21 +10,20 @@ export default function NoSqlFeature() {
         <div className="feature-meta">
           <span className="chip blue">HONOURS THESIS</span>
           <span className="chip">FIRST-AUTHOR MANUSCRIPT</span>
-          <span className="meta-note mono">UBC · 2025–26</span>
+          <span className="meta-note mono">UBC</span>
         </div>
         <h3 className="feature-title display">Text-to-NoSQL via SQL</h3>
         <p className="feature-summary">
-          Natural-language questions to MongoDB queries, using SQL as the bridge. I extended a rule-based SQL-to-MongoDB
-          translator to joins, grouping, set operations and correlated subqueries, and resolved SQL tables to nested
-          collections and arrays.
+          Turning plain-English questions into MongoDB queries by going through SQL first. I extended a SQL-to-MongoDB
+          translator to handle joins, grouping, set operations and nested subqueries.
         </p>
         <ul className="bullets">
           <li>
-            <b>Zero regressions</b> while cutting translation failures by 97%.
+            Translation failures went from <b>1,021 to 32</b>, with nothing that previously worked breaking.
           </li>
           <li>
-            Audited <b>321 failures</b> by hand and traced 75% of the gold-to-predicted accuracy loss to upstream
-            Text-to-SQL errors.
+            Checked <b>321 failures</b> by hand: 75% of the remaining errors came from the step before mine, not the
+            translator.
           </li>
         </ul>
         <div className="tags">
@@ -52,20 +51,19 @@ export default function NoSqlFeature() {
       <div className="feature-chart">
         <div className="chart-head">
           <span className="mono">RESULTS</span>
-          <span className="meta-note mono">TEND-SPIDER · 2,775 QUERIES</span>
+          <span className="meta-note mono">2,775-QUESTION BENCHMARK</span>
         </div>
 
         <div className="bars">
-          <h4 className="chart-subtitle">Translation failures</h4>
-          <BarRow label="Original translator" value={1021} max={TOTAL} display="1,021" color="violet" />
-          <BarRow label="Extended translator" value={32} max={TOTAL} display="32" color="violet" strong delay={0.15} />
-          <span className="chart-note mono">Track = all 2,775 queries · −97%</span>
+          <h4 className="chart-subtitle">Questions that failed to translate</h4>
+          <BarRow label="Before" value={1021} max={TOTAL} display="1,021" color="violet" />
+          <BarRow label="After" value={32} max={TOTAL} display="32" color="violet" strong delay={0.15} />
         </div>
 
         <div className="bars">
-          <h4 className="chart-subtitle">Execution accuracy</h4>
-          <BarRow label="From gold SQL" value={96} max={100} display="96.0%" delay={0.3} />
-          <BarRow label="End to end" value={88.4} max={100} display="88.4%" delay={0.45} />
+          <h4 className="chart-subtitle">Questions answered correctly</h4>
+          <BarRow label="Given correct SQL" value={96} max={100} display="96.0%" delay={0.3} />
+          <BarRow label="Full pipeline" value={88.4} max={100} display="88.4%" delay={0.45} />
         </div>
       </div>
     </Reveal>

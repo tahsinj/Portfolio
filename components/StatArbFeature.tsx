@@ -1,14 +1,14 @@
 import Reveal from "./Reveal";
 import { ArrowUpRight } from "./Icons";
 
-// Lockbox Sharpe of the frozen walk-forward book as each realism fix is applied.
+// Sharpe ratio of the finished strategy on its held-out test year, as each realism check is added.
 const steps = [
-  { label: "As run, research coin list", value: 1.46 },
-  { label: "Same list, archive data", value: 1.45 },
-  { label: "Pegged & tokenized assets out", value: 1.26 },
-  { label: "All 585 pairs, delisted included", value: 0.35, highlight: true },
-  { label: "+ Carry on perp prices", value: -0.01 },
-  { label: "+ Limit orders must fill", value: 0.12 },
+  { label: "Original backtest", value: 1.46 },
+  { label: "Rebuilt from exchange archive", value: 1.45 },
+  { label: "Stablecoins & tokenized stocks removed", value: 1.26 },
+  { label: "Delisted coins added back", value: 0.35, highlight: true },
+  { label: "Funding trade priced on futures", value: -0.01 },
+  { label: "Limit orders must actually fill", value: 0.12 },
 ];
 
 const MIN = -0.1;
@@ -27,29 +27,22 @@ export default function StatArbFeature() {
       <div className="feature-copy">
         <div className="feature-meta">
           <span className="chip violet">QUANT RESEARCH</span>
-          <span className="meta-note mono">2026 · v2 FORWARD-TESTING SINCE OCT 2026</span>
+          <span className="meta-note mono">PERSONAL PROJECT · 2026</span>
         </div>
         <h3 className="feature-title display">Statistical Arbitrage in Cryptocurrencies</h3>
         <p className="feature-summary">
-          Momentum, reversal, order-flow and funding-carry strategies on 2020–26 Binance spot and perp data, combined
-          into a walk-forward book. The interesting part is what happened when I stopped letting the data flatter it.
+          I researched momentum, order-flow and funding-rate strategies on six years of Binance data and combined the
+          best into one portfolio. Then I tried to break it: real trading costs, orders that don&apos;t always fill, and
+          coins that later got delisted.
         </p>
         <div className="figures">
           <div className="figure">
             <div className="display">47</div>
-            <p>Strategy configs researched and registered</p>
+            <p>Strategy variations tested, all logged so the results can be corrected for it</p>
           </div>
           <div className="figure">
             <div className="display">−0.02</div>
-            <p>Book beta to BTC</p>
-          </div>
-          <div className="figure">
-            <div className="display">1.68 / 2.42</div>
-            <p>Funding-carry Sharpe, dev / validation</p>
-          </div>
-          <div className="figure">
-            <div className="display">43%</div>
-            <p>Order-flow P&amp;L lost to missed limit fills</p>
+            <p>Beta to Bitcoin: returns that don&apos;t just ride the market</p>
           </div>
         </div>
         <div className="tags">
@@ -76,10 +69,10 @@ export default function StatArbFeature() {
 
       <div className="feature-chart">
         <div className="chart-head">
-          <span className="mono">ROBUSTNESS CHECK</span>
-          <span className="meta-note mono">LOCKBOX · 2025-07 → 2026-07</span>
+          <span className="mono">STRESS TEST</span>
+          <span className="meta-note mono">HELD-OUT YEAR, JUL 2025 – JUL 2026</span>
         </div>
-        <h4 className="chart-title">Lockbox Sharpe of the frozen book, one realism fix at a time</h4>
+        <h4 className="chart-title">Sharpe ratio after each realism check</h4>
         <div className="bars">
           {steps.map((step, i) => {
             const negative = step.value < 0;
@@ -120,8 +113,8 @@ export default function StatArbFeature() {
         <div className="callout">
           <span className="chip violet">−0.91</span>
           <p>
-            Survivorship bias. The research coin list was missing 46% of the historical top-100; putting the delisted
-            coins back took most of the edge with it.
+            Survivorship bias. My original coin list only had coins that still exist today. Adding back the ones that
+            died erased most of the returns, which is exactly what the test was for.
           </p>
         </div>
       </div>
