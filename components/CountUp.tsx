@@ -5,10 +5,11 @@ import { useEffect, useRef } from "react";
 type CountUpProps = {
   value: number;
   decimals?: number;
+  prefix?: string;
   suffix?: string;
 };
 
-export default function CountUp({ value, decimals = 0, suffix = "" }: CountUpProps) {
+export default function CountUp({ value, decimals = 0, prefix = "", suffix = "" }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -21,7 +22,7 @@ export default function CountUp({ value, decimals = 0, suffix = "" }: CountUpPro
       const step = (now: number) => {
         const k = Math.min(1, (now - start) / 1500);
         const eased = 1 - Math.pow(1 - k, 3);
-        el.textContent = `${(value * eased).toFixed(decimals)}${suffix}`;
+        el.textContent = `${prefix}${(value * eased).toFixed(decimals)}${suffix}`;
         if (k < 1) frame = requestAnimationFrame(step);
       };
       frame = requestAnimationFrame(step);
@@ -34,7 +35,7 @@ export default function CountUp({ value, decimals = 0, suffix = "" }: CountUpPro
       cancelAnimationFrame(frame);
       window.removeEventListener("portfolio:ready", run);
     };
-  }, [value, decimals, suffix]);
+  }, [value, decimals, prefix, suffix]);
 
-  return <span ref={ref}>{`${value.toFixed(decimals)}${suffix}`}</span>;
+  return <span ref={ref}>{`${prefix}${value.toFixed(decimals)}${suffix}`}</span>;
 }

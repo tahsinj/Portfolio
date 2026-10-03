@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CountUp from "./CountUp";
 import PricePaths from "./PricePaths";
 import { ArrowDown, ArrowUpRight, Download } from "./Icons";
@@ -10,17 +10,17 @@ type Focus = "quant" | "swe" | "both";
 
 const focuses: Record<Focus, { label: string; headline: string; summary: string; tools: string[] }> = {
   quant: {
-    label: "QUANT",
+    label: "QUANT ROLES",
     headline: "Quantitative researcher",
     summary:
-      "MQF candidate at Waterloo. I research systematic strategies sceptically: survivorship-free data, realistic costs and fills, and Sharpe ratios deflated for every configuration tried.",
+      "MQF candidate at Waterloo. I test systematic trading strategies the hard way: survivorship-free data, realistic trading costs, and statistics that account for how many ideas I tried.",
     tools: ["Python", "pandas", "statsmodels", "SciPy", "C++", "Backtesting"],
   },
   swe: {
-    label: "SOFTWARE",
+    label: "SOFTWARE ROLES",
     headline: "Software engineer",
     summary:
-      "Python, Java, C++ and TypeScript: workflow automation that cut a team's manual work by 70%, LLM classifiers, query translators and desktop apps.",
+      "Python, Java, C++ and TypeScript: workflow automation, LLM-based tools, a SQL-to-MongoDB translator and desktop apps.",
     tools: ["Python", "Java", "C++", "TypeScript", "React", "Docker"],
   },
   both: {
@@ -35,15 +35,62 @@ const focuses: Record<Focus, { label: string; headline: string; summary: string;
 const courses = [
   { name: "Time Series & Forecasting", score: 100 },
   { name: "Applied Regression", score: 100 },
+  { name: "Machine Learning", score: 100 },
   { name: "Stochastic Modelling & Simulation", score: 99 },
   { name: "Matrix Algebra", score: 99 },
+  { name: "Sampling & Design", score: 99 },
+  { name: "Analysis of Algorithms", score: 98 },
 ];
 
 export default function Hero() {
   const [focus, setFocus] = useState<Focus>("both");
+  const heroRef = useRef<HTMLElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const current = focuses[focus];
+
+  // The card eases toward the pointer instead of jumping, and settles back when it leaves.
+  useEffect(() => {
+    const hero = heroRef.current;
+    const card = cardRef.current;
+    if (!hero || !card || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let targetX = 0;
+    let targetY = 0;
+    let x = 0;
+    let y = 0;
+    let frame = 0;
+    const clamp = (v: number) => Math.max(-1, Math.min(1, v));
+
+    const step = () => {
+      x += (targetX - x) * 0.07;
+      y += (targetY - y) * 0.07;
+      card.style.transform = `rotateX(${(-y * 6).toFixed(2)}deg) rotateY(${(x * 7).toFixed(2)}deg)`;
+      frame = Math.abs(targetX - x) > 0.001 || Math.abs(targetY - y) > 0.001 ? requestAnimationFrame(step) : 0;
+    };
+    const kick = () => {
+      if (!frame) frame = requestAnimationFrame(step);
+    };
+    const onMove = (e: PointerEvent) => {
+      const rect = card.getBoundingClientRect();
+      targetX = clamp((e.clientX - rect.left - rect.width / 2) / rect.width);
+      targetY = clamp((e.clientY - rect.top - rect.height / 2) / rect.height);
+      kick();
+    };
+    const onLeave = () => {
+      targetX = 0;
+      targetY = 0;
+      kick();
+    };
+
+    hero.addEventListener("pointermove", onMove);
+    hero.addEventListener("pointerleave", onLeave);
+    return () => {
+      cancelAnimationFrame(frame);
+      hero.removeEventListener("pointermove", onMove);
+      hero.removeEventListener("pointerleave", onLeave);
+    };
+  }, []);
 
   const moveGlow = (e: React.MouseEvent<HTMLElement>) => {
     const glow = glowRef.current;
@@ -53,17 +100,9 @@ export default function Hero() {
     glow.style.transform = `translate(${e.clientX - rect.left - 320}px, ${e.clientY - rect.top - 320}px)`;
   };
 
-  const tiltCard = (e: React.MouseEvent<HTMLElement>) => {
-    const card = cardRef.current;
-    if (!card) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    card.style.transform = `rotateX(${(-y * 8).toFixed(2)}deg) rotateY(${(x * 10).toFixed(2)}deg)`;
-  };
-
   return (
     <section
+      ref={heroRef}
       id="top"
       className="hero"
       onMouseMove={moveGlow}
@@ -93,8 +132,8 @@ export default function Hero() {
           <p className="hero-headline display rise delay-1">{current.headline}</p>
           <p className="hero-summary rise delay-2">{current.summary}</p>
 
-          <div className="focus rise delay-3" role="group" aria-label="Choose what you are hiring for">
-            <span className="focus-label mono">HIRING FOR</span>
+          <div className="focus rise delay-3" role="group" aria-label="Choose which roles to read about">
+            <span className="focus-label mono">OPEN TO</span>
             <div className="segmented">
               {(["quant", "swe", "both"] as Focus[]).map((key) => (
                 <button
@@ -142,28 +181,26 @@ export default function Hero() {
           <div className="stat-tiles rise delay-5">
             <div className="stat-tile corners">
               <div className="value display">
-                <CountUp value={96.7} decimals={1} suffix="%" />
+                <CountUp value={4.32} decimals={2} />
               </div>
-              <p>Average across my UBC computer science degree</p>
+              <p>GPA out of 4.33, BSc Computer Science at UBC</p>
             </div>
             <div className="stat-tile corners">
               <div className="value display">
-                <CountUp value={70} suffix="%" />
+                <CountUp value={96.7} decimals={1} suffix="%" />
               </div>
-              <p>Of a team&apos;s manual work automated in my developer co-op</p>
+              <p>Cumulative average, with 100% in time series, regression and machine learning</p>
             </div>
             <div className="stat-tile corners">
-              <div className="value display">Gold</div>
-              <p>Math Olympiad medal, ranked 1st in the UAE</p>
+              <div className="value display">
+                <CountUp value={110} prefix="$" suffix="K" />
+              </div>
+              <p>In scholarships, including the $80K International Major Entrance award</p>
             </div>
           </div>
         </div>
 
-        <div
-          className="profile"
-          onMouseMove={tiltCard}
-          onMouseLeave={() => cardRef.current && (cardRef.current.style.transform = "")}
-        >
+        <div className="profile">
           <div ref={cardRef} className="profile-card corners">
             <div className="profile-top mono">
               <span>PROFILE</span>
@@ -191,7 +228,7 @@ export default function Hero() {
               <dd>Python · C++ · SQL · R · Java</dd>
             </dl>
             <div className="courses">
-              <div className="courses-label mono">QUANT-RELEVANT UBC COURSES · FINAL %</div>
+              <div className="courses-label mono">UBC COURSEWORK · FINAL %</div>
               <div className="course-list">
                 {courses.map((course) => (
                   <div key={course.name} className="course">

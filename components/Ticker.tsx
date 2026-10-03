@@ -1,11 +1,10 @@
 const highlights = [
-  { label: "NOW", text: "Master of Quantitative Finance, University of Waterloo" },
-  { label: "GRADUATED", text: "UBC Computer Science with a 96.7% average" },
-  { label: "THESIS", text: "Plain-English questions to MongoDB queries, 97% fewer translation failures" },
-  { label: "QUANT RESEARCH", text: "Caught survivorship bias inflating a strategy's Sharpe ratio fourfold" },
-  { label: "CO-OP", text: "Automated 70% of a team's manual workflow" },
-  { label: "OLYMPIAD", text: "Gold medal, ranked 1st in the UAE" },
+  { label: "NOW", text: "Master of Quantitative Finance at the University of Waterloo" },
+  { label: "GRADUATED", text: "BSc Computer Science, UBC: 96.7% average, Dean's Scholar" },
+  { label: "THESIS", text: "First-author manuscript on turning plain-English questions into MongoDB queries" },
+  { label: "RESEARCH", text: "Crypto statistical arbitrage, backtested on survivorship-free data" },
   { label: "SCHOLARSHIPS", text: "$110K awarded at UBC" },
+  { label: "OLYMPIAD", text: "Gold medal, ranked 1st in the UAE" },
 ];
 
 export default function Ticker() {
