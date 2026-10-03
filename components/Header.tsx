@@ -1,6 +1,6 @@
 const links = [
   { href: "#work", label: "WORK" },
-  { href: "#experience", label: "EXPERIENCE" },
+  { href: "#experience", label: "BACKGROUND" },
   { href: "#toolkit", label: "TOOLKIT" },
   { href: "#honours", label: "HONOURS" },
   { href: "#contact", label: "CONTACT" },

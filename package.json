@@ -11,7 +11,8 @@
   "dependencies": {
     "next": "^15.1.12",
     "react": "^19.0.8",
-    "react-dom": "^19.0.8"
+    "react-dom": "^19.0.8",
+    "simple-icons": "^16.33.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
