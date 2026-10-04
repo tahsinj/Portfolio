@@ -27,22 +27,30 @@ export default function StatArbFeature() {
       <div className="feature-copy">
         <div className="feature-meta">
           <span className="chip violet">QUANT RESEARCH</span>
-          <span className="meta-note mono">PERSONAL PROJECT · 2026</span>
+          <span className="meta-note mono">PERSONAL PROJECT · 2026 · LIVE FORWARD TEST RUNNING</span>
         </div>
         <h3 className="feature-title display">Statistical Arbitrage in Cryptocurrencies</h3>
         <p className="feature-summary">
-          I researched momentum, order-flow and funding-rate strategies on six years of Binance data and combined the
-          best into one portfolio. Then I tried to break it: real trading costs, orders that don&apos;t always fill, and
-          coins that later got delisted.
+          Momentum, order-flow and funding-rate strategies on six years of Binance data, combined into one walk-forward
+          portfolio. On a year of data it never saw during research, it returned a <b>1.46 Sharpe ratio</b> with almost no
+          exposure to Bitcoin. Then I tried to break it, and a revised version is now running a live forward test.
         </p>
         <div className="figures">
           <div className="figure">
-            <div className="display">47</div>
-            <p>Strategy variations tested, all logged so the results can be corrected for it</p>
+            <div className="display">1.46</div>
+            <p>Sharpe ratio on the held-out year</p>
           </div>
           <div className="figure">
             <div className="display">−0.02</div>
             <p>Beta to Bitcoin: returns that don&apos;t just ride the market</p>
+          </div>
+          <div className="figure">
+            <div className="display">1.68 / 2.42</div>
+            <p>Funding-rate strategy Sharpe, development / validation</p>
+          </div>
+          <div className="figure">
+            <div className="display">47</div>
+            <p>Strategy variations tested, all logged to correct for overfitting</p>
           </div>
         </div>
         <div className="tags">

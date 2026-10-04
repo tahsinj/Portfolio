@@ -1086,6 +1086,58 @@ html:not([data-ready]) .path-layer {
   line-height: 1.65;
 }
 
+.feature-summary b {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.pipeline {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.pipeline-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  border: 1px solid var(--line-2);
+  background: rgba(4, 5, 10, 0.5);
+}
+
+.pipeline-step:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: -11px;
+  z-index: 1;
+  color: var(--blue-hi);
+  font-size: 14px;
+  transform: translateY(-50%);
+}
+
+.pipeline-step.mine {
+  border-color: var(--blue);
+  background: rgba(61, 123, 255, 0.12);
+  box-shadow: 0 0 24px -8px rgba(61, 123, 255, 0.7);
+}
+
+.pipeline-label {
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.pipeline-note {
+  color: var(--muted);
+  font-size: 11px;
+}
+
 .figures {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1881,6 +1933,14 @@ html:not([data-ready]) .path-layer {
 
   .bar-row {
     grid-template-columns: minmax(0, 1fr) 60px;
+  }
+
+  .pipeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pipeline-step:nth-child(2)::after {
+    display: none;
   }
 
   .bar-row > .bar-label {
