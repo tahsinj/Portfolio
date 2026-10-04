@@ -1252,6 +1252,10 @@ html:not([data-ready]) .path-layer {
   background: var(--violet);
 }
 
+.bar-fill.muted {
+  background: #3a4270;
+}
+
 .bar-gap {
   position: absolute;
   top: 3px;
