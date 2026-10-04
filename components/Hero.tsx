@@ -39,6 +39,7 @@ const courses = [
   { name: "Stochastic Modelling & Simulation", score: 99 },
   { name: "Matrix Algebra", score: 99 },
   { name: "Sampling & Design", score: 99 },
+  { name: "Differential & Integral Calculus", score: 100 },
   { name: "Analysis of Algorithms", score: 98 },
 ];
 
@@ -165,6 +166,9 @@ export default function Hero() {
               <Download size={16} />
               RÉSUMÉ
             </a>
+            <a className="text-link" href="/Transcript.pdf" target="_blank" rel="noopener noreferrer">
+              TRANSCRIPT <ArrowUpRight />
+            </a>
             <a className="text-link" href="https://github.com/tahsinj" target="_blank" rel="noopener noreferrer">
               GITHUB <ArrowUpRight />
             </a>
@@ -240,6 +244,9 @@ export default function Hero() {
                   </div>
                 ))}
               </div>
+              <a className="text-link transcript-link" href="/Transcript.pdf" target="_blank" rel="noopener noreferrer">
+                FULL TRANSCRIPT <ArrowUpRight />
+              </a>
             </div>
           </div>
         </div>

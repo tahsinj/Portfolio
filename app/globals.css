@@ -894,6 +894,11 @@ html:not([data-ready]) .path-layer {
   text-align: right;
 }
 
+.transcript-link {
+  margin-top: 6px;
+  font-size: 11px;
+}
+
 .meter {
   position: relative;
   grid-column: 1 / span 2;
@@ -1863,13 +1868,9 @@ html:not([data-ready]) .path-layer {
     transform: none !important;
   }
 
-  /* No auto-scroll, so let people scroll the strip themselves. */
-  .ticker-window {
-    overflow-x: auto;
-  }
-
-  .ticker-item[aria-hidden="true"] {
-    display: none;
+  /* The highlights strip keeps scrolling slowly; hovering pauses it. */
+  .ticker-track {
+    animation: marquee 90s linear infinite !important;
   }
 }
 

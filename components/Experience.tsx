@@ -27,9 +27,14 @@ const education: Entry[] = [
       <>
         <b>96.7%</b> average, GPA <b>4.32/4.33</b>.
       </>,
-      <>Dean&apos;s List 2022–24, Dean&apos;s Scholar 2024–25.</>,
+      <>Dean&apos;s List 2022–24, Dean&apos;s Scholar 2024–25, Faculty of Science International Student Award.</>,
       <>
         <b>$110K</b> in scholarships, including the $80K International Major Entrance Scholarship.
+      </>,
+      <>
+        <a href="/Transcript.pdf" target="_blank" rel="noopener noreferrer">
+          View transcript
+        </a>
       </>,
     ],
   },
